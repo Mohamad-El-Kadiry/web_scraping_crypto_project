@@ -7,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from fake_useragent import UserAgent
 from selenium.webdriver.common.by import By
 from datetime import datetime
-import pytz  # Import pytz for timezone conversion
+
 
 # Setup the Selenium WebDriver with the necessary options
 def setup_driver():
@@ -22,16 +22,6 @@ def setup_driver():
     service = Service(ChromeDriverManager().install())
     return webdriver.Chrome(service=service, options=options)
 
-# Function to get Lebanon local time
-def get_lebanon_local_time():
-    # Get the current UTC time
-    utc_now = datetime.now(pytz.utc)
-
-    # Convert UTC to Lebanon's local time
-    lebanon_time = utc_now.astimezone(pytz.timezone('Asia/Beirut'))
-
-    # Return the local time formatted
-    return lebanon_time.strftime("%Y-%m-%d %H:%M:%S")
 
 def scrape_bitcoin_data(url):
     driver = setup_driver()
@@ -40,11 +30,12 @@ def scrape_bitcoin_data(url):
 
     data = {}
     try:
-        # Time of Scraping (Lebanon Local Time)
-        data["Time of Scraping"] = get_lebanon_local_time()
+        # Time of Scraping
+        data["Time of Scraping"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         # Price (Current)
         try:
+            # Use the first occurrence of an element with data-converter-target="price"
             current_price = driver.find_element(By.XPATH,
                 "//div[@data-coin-show-target='staticCoinPrice']//span[@data-converter-target='price']").text.strip()
         except Exception as e:
@@ -53,8 +44,10 @@ def scrape_bitcoin_data(url):
 
         # 24h Range (High/Low)
         try:
+            # Locate the container with the text "24h Range" among its children
             range_container = driver.find_element(By.XPATH,
                                                   '//div[contains(@class, "tw-flex tw-justify-between") and contains(., "24h Range")]')
+            # Find all spans inside this container with attribute data-price-target="price"
             range_spans = range_container.find_elements(By.XPATH, './/span[@data-price-target="price"]')
             if len(range_spans) >= 2:
                 low_range = range_spans[0].text.strip()
