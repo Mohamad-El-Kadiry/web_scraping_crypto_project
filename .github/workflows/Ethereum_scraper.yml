@@ -15,7 +15,7 @@ jobs:
 
       - name: List repository contents (debugging)
         run: |
-          ls -la  # Check if Solana_Scraper.py is in the root directory
+          ls -la  
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -36,7 +36,7 @@ jobs:
 
       - name: Run scraper
         run: |
-          xvfb-run --auto-servernum python ethereum.py  # Updated to match your script name
+          xvfb-run --auto-servernum python Ethereum.py  # Updated to match your script name
 
       - name: Commit and push CSV update
         run: |
