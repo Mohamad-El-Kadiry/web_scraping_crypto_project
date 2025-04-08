@@ -36,7 +36,7 @@ jobs:
 
       - name: Run scraper
         run: |
-          xvfb-run --auto-servernum python Solana_Scraper.py  # Updated to match your script name
+          xvfb-run --auto-servernum python ethereum.py  # Updated to match your script name
 
       - name: Commit and push CSV update
         run: |
