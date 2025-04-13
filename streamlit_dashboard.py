@@ -12,7 +12,7 @@ st.title("🚀 Ethereum Forecast & Performance Dashboard")
 # 🧹 Data Cleaning Logic
 # ----------------------
 def run_data_cleaning():
-    df = pd.read_csv('data/ethereum_data.csv')
+    df = pd.read_csv('ethereum_data.csv')
     df['Time of Scraping'] = pd.to_datetime(df['Time of Scraping'])
 
     def clean_numeric(col):
@@ -31,14 +31,14 @@ def run_data_cleaning():
     df_cleaned = df[['Time of Scraping', 'Price', 'Price Change Since Last', '24h Low', '24h High', '24h Avg Price',
                      'Market Cap', '24h Trading Volume', 'Circulating Supply',
                      '1h Price Change %', '24h Price Change %', '7d Price Change %']]
-    df_cleaned.to_csv('data/ethereum_data_cleaned.csv', index=False)
+    df_cleaned.to_csv('ethereum_data_cleaned.csv', index=False)
     print("✅ Data cleaned and saved!")
 
 # --------------------------
 # 🤖 Machine Learning Model
 # --------------------------
 def run_model_prediction():
-    df = pd.read_csv('data/ethereum_data_cleaned.csv')
+    df = pd.read_csv('ethereum_data_cleaned.csv')
     df['Time of Scraping'] = pd.to_datetime(df['Time of Scraping'])
     df.dropna(inplace=True)
 
@@ -79,7 +79,7 @@ def run_model_prediction():
     result = df.iloc[split:].copy()
     result['RF_Predicted'] = rf_pred
     result['NB_Class_Predicted'] = nb_pred
-    result.to_csv('data/ethereum_predicted.csv', index=False)
+    result.to_csv('ethereum_predicted.csv', index=False)
 
     fig_pred, ax_pred = plt.subplots(figsize=(12, 5))
     ax_pred.plot(dates_test, y_reg_test.values, label="Actual", color='black')
@@ -87,11 +87,11 @@ def run_model_prediction():
     ax_pred.set_title("ETH Price Prediction (Random Forest)")
     ax_pred.legend()
     ax_pred.grid(True)
-    fig_pred.savefig('data/eth_prediction_graph.png')
+    fig_pred.savefig('eth_prediction_graph.png')
 
     combined_result_text = f"Naive Bayes Accuracy: {acc:.2f}\nRandom Forest MAE: {mae:.2f} | RMSE: {rmse:.2f}"
     print(combined_result_text)
-    with open('data/ml_results.txt', 'w') as f:
+    with open('ml_results.txt', 'w') as f:
         f.write(combined_result_text + '\n')
 
     print("✅ Prediction complete and saved, graph exported!")
