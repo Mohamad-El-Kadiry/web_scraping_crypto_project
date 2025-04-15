@@ -68,7 +68,7 @@ for i in range(120):  # 5 days * 24 hours
     input_row["Circulating Supply"] = last_row["Circulating Supply"] * (1 + np.random.normal(0, 0.005))
 
     # Prediction
-    input_scaled = scaler.transform(input_row[features].values.reshape(1, -1))
+    input_scaled = scaler.transform(pd.DataFrame([input_row[features].values], columns=features))
     predicted_price = model.predict(input_scaled)[0]
     future_prices.append(predicted_price)
 
