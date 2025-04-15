@@ -17,7 +17,7 @@ def load_data(coin_name):
     elif coin_name == "Ethereum":
         df = pd.read_csv("ethereum_data_cleaned.csv")
     elif coin_name == "Bitcoin":
-        df = pd.read_csv("bitcoin_data_cleaned.csv")
+        df = pd.read_csv("Bitcoin_cleaned.csv")
 
     df["Time of Scraping"] = pd.to_datetime(df["Time of Scraping"])
     df = df.sort_values("Time of Scraping").reset_index(drop=True)
