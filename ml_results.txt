@@ -1,2 +1,0 @@
-Naive Bayes Accuracy: 0.75
-Random Forest MAE: 30.44 | RMSE: 36.73
