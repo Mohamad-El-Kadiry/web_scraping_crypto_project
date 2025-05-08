@@ -1,0 +1,15 @@
+2025-05-08 12:07:11,803 | INFO | ====== WebDriver manager ======
+2025-05-08 12:07:20,573 | INFO | Get LATEST chromedriver version for google-chrome
+2025-05-08 12:07:21,124 | INFO | Get LATEST chromedriver version for google-chrome
+2025-05-08 12:07:21,433 | INFO | Driver [C:\Users\mIina\.wdm\drivers\chromedriver\win64\136.0.7103.92\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-08 12:07:22,888 | INFO | Accessing https://www.coingecko.com/en/coins/bitcoin
+2025-05-08 12:07:32,832 | INFO | Scraped Data:
+2025-05-08 12:07:32,832 | INFO | Time of Scraping: 2025-05-08 12:07:32
+2025-05-08 12:07:32,832 | INFO | Price: $99,615.74
+2025-05-08 12:07:32,832 | INFO | 24h Range (High/Low): $95,967.46 - $99,658.90
+2025-05-08 12:07:32,841 | INFO | Market Cap: $1,978,689,516,714
+2025-05-08 12:07:32,842 | INFO | 24h Trading Volume: $72,956,102,388
+2025-05-08 12:07:32,842 | INFO | Circulating Supply: 19,861,812
+2025-05-08 12:07:32,842 | INFO | 1h Price Change %: 0.2%
+2025-05-08 12:07:32,842 | INFO | 24h Price Change %: 2.7%
+2025-05-08 12:07:32,842 | INFO | 7d Price Change %: 4.7%
